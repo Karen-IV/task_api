@@ -1,0 +1,6 @@
+1) Install SQLALchemy, psycopg, fastapi, uvicorn, dotenv
+pip install fastapi uvicorn
+pip install sqlaLchemy psycopg --- en caso de no ser windows se usa psycopg2
+pip install python-dotenv
+
+2) configurar la conexion con la base de datos
