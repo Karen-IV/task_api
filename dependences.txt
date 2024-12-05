@@ -1,6 +1,21 @@
-1) Install SQLALchemy, psycopg, fastapi, uvicorn, dotenv
+1) Install SQLALchemy, psycopg, fastapi, uvicorn, dotenv, alembic, pydantic-settings
 pip install fastapi uvicorn
-pip install sqlaLchemy psycopg --- en caso de no ser windows se usa psycopg2
+pip install sqlaLchemy psycopg --- en caso de no ser windows se usa psycopg2-binary
 pip install python-dotenv
+pip intall alembic
+pip install pydantic-settings
+
 
 2) configurar la conexion con la base de datos
+
+first you have a database for made a migrations
+
+In alembic.ini you should write the url in this line code and replace data:
+
+sqlalchemy.url = postgresql+psycopg://user:password@localhost:5432/name_db
+
+and you should to create a file named .env and add the same line, you can copy and paste the line previous created 
+
+sqlalchemy.url = postgresql+psycopg://user:password@localhost:5432/name_db
+
+recomedation. add this archive in .gitignore for security
