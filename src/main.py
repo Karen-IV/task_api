@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from src.models.user_model import User
 from src.routers.user import get_db
 from src.crud.user import create_user
-from src.schemas.user import UserResponse,UserCreate
+from src.schemas.user import UserResponse, UserCreate
 
 app = FastAPI()
 

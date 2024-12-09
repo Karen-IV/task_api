@@ -3,8 +3,13 @@ from sqlalchemy.orm import Session
 from src.core.connection_db import SessionLocal
 from src.schemas.user import UserCreate
 from src.crud.user import create_user
+from pydantic import BaseModel
+
 
 router = APIRouter()
+
+class UserCreate(BaseModel):
+    pass
 
 def get_db():
     db = SessionLocal()
