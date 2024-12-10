@@ -10,6 +10,7 @@ class Rol(Base):
     id = Column(Integer, primary_key=True, index=True)
     type_user = Column(String, nullable=False, unique=True)
     description = Column(String, nullable=False)
+    users = relationship("User", back_populates="rol")
 
 class User(Base):
     __tablename__ = "users"
@@ -20,12 +21,15 @@ class User(Base):
     rol_id = Column(Integer, ForeignKey("roles.id"))
     create_at = Column(DateTime, nullable=False, server_default=func.now())
     rol = relationship("Rol", back_populates="users")
+    hashed_password = Column(String, nullable=False)
+
 
 class StatusTask(Base):
     __tablename__ = "status_tasks"
     id = Column(Integer, primary_key=True, index=True)
     type_status = Column(String, nullable=False)
     create_at = Column(DateTime, nullable=False, server_default=func.now())
+    tasks = relationship("Tasks", back_populates="status")
 
 class Tasks(Base):
     __tablename__ = "tasks"
