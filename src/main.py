@@ -46,12 +46,14 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="User not found")
     return user
 
-@app.put("/users/{user_id}/delete", tags=["CRUD_USERS"])
-def update_user_endpoint(user_id: int, name_user: str = None, hashed_password: str = None, db: Session = Depends(get_db)):
-    user = update_user(db, user_id, name_user, hashed_password)
-    if user is None:
+@app.put("/users/{user_id}", tags=["CRUD_USERS"])
+def update_user_endpoint(user_id: int, user: UserCreate, db: Session = Depends(get_db)):
+    # Llama a la función para actualizar el usuario
+    updated_user = update_user(db, user_id, user)
+    if updated_user is None:
         raise HTTPException(status_code=404, detail="User not found")
-    return {"message": "User updated", "user": user}
+    
+    return {"message": "User updated successfully", "user": updated_user}
 
 @app.delete("/users/{user_id}", tags=["CRUD_USERS"])
 def delete_user_endpoint(user_id: int, db: Session = Depends(get_db)):
